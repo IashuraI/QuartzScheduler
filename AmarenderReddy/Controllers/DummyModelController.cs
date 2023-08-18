@@ -64,6 +64,8 @@ namespace AmarenderReddy.Controllers
             }
             else
             {
+                ITrigger? oldTrigger = await _scheduler.GetTrigger(Constants.TriggerKey);
+
                 if (dummyModel.Publish)
                 {
                     ITrigger trigger = TriggerBuilder.Create()
@@ -72,17 +74,25 @@ namespace AmarenderReddy.Controllers
                         .WithCronSchedule(dummyModel.Cron)
                         .Build();
 
-                    await _scheduler.ScheduleJob(trigger);
+                    if(oldTrigger != null)
+                    {
+                        await _scheduler.RescheduleJob(Constants.TriggerKey, trigger);
+                    }
+                    else
+                    {
+                        await _scheduler.ScheduleJob(trigger);
+                    }
 
                     _dummyContext.DummyModel.Add(dummyModel);
                 }
                 else
                 {
-                    await _scheduler.UnscheduleJob(Constants.TriggerKey);
+                    if (oldTrigger != null)
+                    {
+                        await _scheduler.UnscheduleJob(Constants.TriggerKey);
+                    }
                 }
             }
-
-            
 
             _dummyContext.SaveChanges();
         }
