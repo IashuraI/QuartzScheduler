@@ -20,23 +20,34 @@ namespace AmarenderReddy.Jobs
 
         public async Task Execute(IJobExecutionContext context)
         {
-            _logger.LogInformation("Hello world!");
+            _logger.LogInformation($"LogJob started. { DateTime.Now }");
 
             DummyModel? dummyModel = await _dummyContext.DummyModel.FirstOrDefaultAsync();
             if (dummyModel is not null)
             {
                 if (dummyModel.LastTriggerTime.HasValue)
                 {
+
                     //trigger job all the times it was not triggered
                     int triggerAmount = _triggerCalculationService.CalculateAmountOfJobNeedsToBeDone(dummyModel.LastTriggerTime.Value, dummyModel.Cron);
                     for (int i = 0; i < triggerAmount; i++)
                     {
                         await context.Scheduler.TriggerJob(Constants.JobKey);
                     }
+
+                    _logger.LogInformation($"LogJob wasn't triggered for {triggerAmount} times.");
+                    _logger.LogInformation($"Dummy model: " +
+                        $"Id: { dummyModel.Id } " +
+                        $"Name: { dummyModel.Name } " +
+                        $"Publish: { dummyModel.Publish } " +
+                        $"Cron: { dummyModel.Cron } " +
+                        $"LastTriggerTime: { dummyModel.LastTriggerTime }");
                 }
 
                 dummyModel.LastTriggerTime = DateTimeOffset.UtcNow;
                 await _dummyContext.SaveChangesAsync();
+
+                _logger.LogInformation($"LogJob finished.");
             }
             
             await Task.CompletedTask;
