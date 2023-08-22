@@ -1,6 +1,6 @@
 ﻿using Quartz;
 
-namespace AmarenderReddy.Services
+namespace QuartzScheduler.Services
 {
     public class TriggerCalculationService
     {

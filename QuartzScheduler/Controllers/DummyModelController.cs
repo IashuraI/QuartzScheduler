@@ -1,10 +1,10 @@
-using AmarenderReddy.Data;
-using AmarenderReddy.Services;
+using QuartzScheduler.Data;
+using QuartzScheduler.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Quartz;
 
-namespace AmarenderReddy.Controllers
+namespace QuartzScheduler.Controllers
 {
     [ApiController]
     [Route("[controller]")]

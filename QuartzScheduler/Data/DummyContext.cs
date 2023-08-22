@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace AmarenderReddy.Data
+namespace QuartzScheduler.Data
 {
     public class DummyContext : DbContext
     {

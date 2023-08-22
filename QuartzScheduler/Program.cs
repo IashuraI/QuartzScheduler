@@ -1,7 +1,7 @@
-using AmarenderReddy;
-using AmarenderReddy.Data;
-using AmarenderReddy.Jobs;
-using AmarenderReddy.Services;
+using QuartzScheduler;
+using QuartzScheduler.Data;
+using QuartzScheduler.Jobs;
+using QuartzScheduler.Services;
 using Microsoft.EntityFrameworkCore;
 using Quartz;
 using Quartz.AspNetCore;

@@ -1,4 +1,4 @@
-namespace AmarenderReddy
+namespace QuartzScheduler
 {
     public class DummyModel
     {

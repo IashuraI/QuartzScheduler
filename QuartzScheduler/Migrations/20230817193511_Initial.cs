@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace AmarenderReddy.Migrations
+namespace QuartzScheduler.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

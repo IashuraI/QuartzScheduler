@@ -1,6 +1,6 @@
 ﻿using Quartz;
 
-namespace AmarenderReddy
+namespace QuartzScheduler
 {
     public static class Constants
     {

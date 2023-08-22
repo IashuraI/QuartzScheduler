@@ -1,9 +1,9 @@
-﻿using AmarenderReddy.Data;
-using AmarenderReddy.Services;
+﻿using QuartzScheduler.Data;
+using QuartzScheduler.Services;
 using Microsoft.EntityFrameworkCore;
 using Quartz;
 
-namespace AmarenderReddy.Jobs
+namespace QuartzScheduler.Jobs
 {
     public class LogJob : IJob
     {
